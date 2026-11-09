@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Ігровий портал</title>
+    
+    <script src="jquery-4.0.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            min-height: 100vh;
+            color: #fff;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            padding: 20px 0;
+        }
+        .menu-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            transition: box-shadow 0.3s;
+            position: relative; 
+            z-index: 1;
+        }
+        .menu-card:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        .btn-custom {
+            background: #2ed573;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+        }
+        .btn-custom:hover { background: #26b863; color: white; }
+
+        .custom-modal {
+            display: none; 
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-box {
+            background: #fff;
+            color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold">🎮 Ігровий портал</h1>
+            <p class="lead">Оберіть гру </p>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
+            
+            <div class="col">
+                <div class="menu-card p-4 h-100 text-center d-flex flex-column">
+                    <h2 class="h4 mb-3">🔮 Магічна куля</h2>
+                    <p class="text-light flex-grow-1">Задай питання і отримай передбачення </p>
+                    <a href="https://miroslavkobrin.github.io/magic-ball/" 
+                       class="btn btn-custom mt-3 w-100 game-link"
+                       data-desc="Введіть своє питання у текстове поле, натисніть кнопку «Запитати», і куля випадковим чином дасть вам відповідь.">
+                       Відкрити
+                    </a>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="menu-card p-4 h-100 text-center d-flex flex-column">
+                    <h2 class="h4 mb-3">🎲 Більше число</h2>
+                    <p class="text-light flex-grow-1">Змагайся з комп'ютером до 3 перемог</p>
+                    <a href="https://miroslavkobrin.github.io/Play/" 
+                       class="btn btn-custom mt-3 w-100 game-link"
+                       data-desc="Грайте проти комп'ютера. Натискайте кнопку, щоб згенерувати випадкові числа. Хто має більше число — отримує бал. Гра триває до 3 перемог.">
+                       Відкрити
+                    </a>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="menu-card p-4 h-100 text-center d-flex flex-column">
+                    <h2 class="h4 mb-3">🃏 Гра «21»</h2>
+                    <p class="text-light flex-grow-1">Набери більше очок за 3 спроби </p>
+                    <a href="https://miroslavkobrin.github.io/-21-/" 
+                       class="btn btn-custom mt-3 w-100 game-link"
+                       data-desc="Ви отримуєте випадкові картки. Ваша мета — набрати більше очок, ніж комп'ютер, за 3 ітерації (спроби). Зверніть увагу на номінали карт!">
+                       Відкрити
+                    </a>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="menu-card p-4 h-100 text-center d-flex flex-column">
+                    <h2 class="h4 mb-3">🎰 Однорукий бандит</h2>
+                    <p class="text-light flex-grow-1">Збери 3 однакові фрукти в ряд </p>
+                    <a href="https://miroslavkobrin.github.io/-/" 
+                       class="btn btn-custom mt-3 w-100 game-link"
+                       data-desc="Натискайте кнопку Generate, щоб крутити барабани автомата. Якщо у будь-якому горизонтальному ряду випадуть 3 однакові фрукти — ви виграли!">
+                       Відкрити
+                    </a>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="menu-card p-4 h-100 text-center d-flex flex-column">
+                    <h2 class="h4 mb-3">🗣️ Language Learning</h2>
+                    <p class="text-light flex-grow-1">Вивчай англійські слова</p>
+                    <a href="https://miroslavkobrin.github.io/Language/" 
+                       class="btn btn-custom mt-3 w-100 game-link"
+                       data-desc="Оберіть рівень складності. На картці з'явиться англійське слово, введіть його переклад українською та натисніть Enter. Використовуйте стрілочки для навігації.">
+                       Відкрити
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="custom-modal" id="infoModal">
+        <div class="modal-box">
+            <h2 id="modalTitle" class="mb-3">Назва гри</h2>
+            <p id="modalDesc" class="text-muted mb-4">Опис гри...</p>
+            <a href="#" id="playLink" class="btn btn-custom w-100 mb-2">Грати</a>
+            <button id="closeModal" class="btn btn-secondary w-100">Закрити</button>
+        </div>
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+            
+            $('.menu-card').hover(
+                function() {
+                    $(this).animate({ top: "-10px" }, 200);
+                },
+                function() {
+                    $(this).animate({ top: "0px" }, 200);
+                }
+            );
+
+            $('.game-link').click(function(event) {
+                event.preventDefault(); 
+                let gameUrl = $(this).attr('href');
+                let gameTitle = $(this).closest('.menu-card').find('h2').text();
+                let gameDesc = $(this).attr('data-desc');
+
+                $('#modalTitle').text(gameTitle);
+                $('#modalDesc').text(gameDesc);
+                $('#playLink').attr('href', gameUrl);
+
+                $('#infoModal').css('display', 'flex').hide().fadeIn(300);
+            });
+
+            $('#closeModal').click(function() {
+                $('#infoModal').fadeOut(300);
+            });
+
+        });
+    </script>
+</body>
+</html>
